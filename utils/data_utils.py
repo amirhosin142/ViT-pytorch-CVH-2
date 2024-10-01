@@ -33,6 +33,12 @@ def get_loader(args):
                                    train=False,
                                    download=True,
                                    transform=transform_test) if args.local_rank in [-1, 0] else None
+    elif args.dataset == "stanford40":
+      trainset = datasets.ImageFolder(root='/content/StanfordActionDataset/train/',
+      transform=transform_train)
+
+      testset = datasets.ImageFolder(root='/content/StanfordActionDataset/test/', 
+      transform=transform_test)
 
     else:
         trainset = datasets.CIFAR100(root="./data",
